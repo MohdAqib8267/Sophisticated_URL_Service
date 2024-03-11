@@ -58,16 +58,38 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+# URL Shortening Service
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Overview
 
-## Stay in touch
+This GitHub repository houses a sophisticated URL shortening service designed for scalability, security, and comprehensive analytics. The service allows users to generate short URLs for lengthy input URLs and provides detailed analytics about the generated URLs.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Features
 
-## License
+1. **URL Shortening:**
+   - Utilizes the shortId library to generate unique short IDs for input URLs.
+   - Example: "https://google.com" transforms to "http://localhost:3000/api/url/xyzabc".
 
-Nest is [MIT licensed](LICENSE).
+2. **Database Structure:**
+   - Employs two database tables: Users and URLs.
+   - Users table stores user information for authentication and authorization.
+   - URLs table contains records of generated short URLs and associated analytics data.
+
+3. **User Authentication and Authorization:**
+   - Implements secure user authentication using JsonWebToken for token-based security.
+   - Utilizes bcryptjs library for password hashing and verification.
+
+4. **Middleware for Authentication:**
+   - Develops a middleware function to authenticate users before allowing URL generation.
+   - Ensures only authenticated users can create short URLs.
+
+5. **Analytics:**
+   - Captures analytics data, including click count, time of clicks, browser information, and operating system.
+   - Utilizes JavaScript libraries like platform.js for browser info and ua-parser for device info.
+   - Presents reconstructed analytics data for a comprehensive user view.
+
+6. **Scalability:**
+   - Implements Redis for caching to enhance scalability and performance.
+   - Uses Redis as a persistent cache for storing frequently accessed data.
+   - Adopts a caching strategy to check the cache before making database API calls.
+   - Leverages Redis for load balancing during high traffic periods.
