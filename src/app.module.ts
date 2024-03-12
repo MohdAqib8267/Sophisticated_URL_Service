@@ -21,7 +21,7 @@ import { RedisOptions } from './redis/app-options.constants';
     MongooseModule.forRoot(process.env.DB_URL),
     UrlModule,
     UserModule,
-    CacheModule.register(RedisOptions)
+    CacheModule.register(RedisOptions)  
   ],
   controllers: [AppController],
   providers: [AppService,{

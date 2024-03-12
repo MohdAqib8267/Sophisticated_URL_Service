@@ -4,7 +4,7 @@ import { User } from './Schemas/user.schema';
 import mongoose from 'mongoose';
 import { CACHE_MANAGER, CacheKey, CacheTTL } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import { RedisOptions } from '../redis/app-options.constants';
+
 
 
 @Injectable()
@@ -22,7 +22,7 @@ export class UserService {
            
             const cachedUser = await this.cacheService.get(`user_${email}`);
             console.log('User retrieved from cache:', cachedUser);
-            RedisOptions
+            
             
             if (cachedUser) {
                 return cachedUser;
